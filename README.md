@@ -16,6 +16,7 @@ Modify marathon.json to fit your needs and POST the JSON to marathon. rbd volume
 - Run only one instance per volume, so do not restart with marathon "restart app"
 
 ## ToDo
+- JVM auto tuning (via cgroup mount)
 - default config file
 - https
 
