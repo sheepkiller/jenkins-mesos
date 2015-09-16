@@ -18,7 +18,7 @@ Modify marathon.json to fit your needs and POST the JSON to marathon. rbd volume
 ## ToDo
 - default config file
 - https
-- 
+
 ### Was inspired by:
 - https://hub.docker.com/r/thefactory/jenkins-mesos/
 
