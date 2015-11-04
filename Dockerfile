@@ -24,7 +24,7 @@ RUN  yum -y install /tmp/mesosphere-el-repo-7-1.noarch.rpm http://repos.mesosphe
         sed -i 's/^Defaults.*requiretty/#&/g' /etc/sudoers
 
 ENV JAVA_MAJOR=8 \
-    JAVA_UPDATE=1.625.1 \
+    JAVA_UPDATE=65 \
     JAVA_BUILD=17 
 
 RUN wget --no-cookies --no-check-certificate \
@@ -34,7 +34,7 @@ RUN wget --no-cookies --no-check-certificate \
     rm -f /tmp/jdk-${JAVA_MAJOR}u${JAVA_UPDATE}-linux-x64.rpm
 
 ENV JAVA_HOME=/usr/java/jdk1.8.0_${JAVA_UPDATE} \
-    JENKINS_VERSION=1.609.3 \
+    JENKINS_VERSION=1.625.1 \
     MESOS_JENKINS_VERSION=0.8.0
 
 
