@@ -11,7 +11,8 @@ ENV MESOS_NATIVE_JAVA_LIBRARY=/usr/local/lib/libmesos.so \
 
 RUN adduser -m jenkins && \
      mkdir ${JENKINS_WARDIR} && \
-     chown jenkins:jenkins ${JENKINS_WARDIR}
+     chown jenkins:jenkins ${JENKINS_WARDIR} && \
+     rm -fr /home/jenkins
 
 RUN  yum -y install /tmp/mesosphere-el-repo-7-1.noarch.rpm http://repos.mesosphere.com/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm \
         epel-release  \
@@ -23,8 +24,8 @@ RUN  yum -y install /tmp/mesosphere-el-repo-7-1.noarch.rpm http://repos.mesosphe
         sed -i 's/^Defaults.*requiretty/#&/g' /etc/sudoers
 
 ENV JAVA_MAJOR=8 \
-    JAVA_UPDATE=60 \
-    JAVA_BUILD=27 
+    JAVA_UPDATE=1.625.1 \
+    JAVA_BUILD=17 
 
 RUN wget --no-cookies --no-check-certificate \
     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
