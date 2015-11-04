@@ -47,9 +47,9 @@ RUN wget http://mirrors.jenkins-ci.org/war-stable/${JENKINS_VERSION}/jenkins.war
 RUN tar -xzf ${JENKINS_WARDIR}/mesos-${MESOS_JENKINS_VERSION}.tar.gz && \
     cd ${JENKINS_WARDIR}/mesos-plugin-mesos-${MESOS_JENKINS_VERSION} && \
     sed -i "s,1.565.3,${JENKINS_VERSION}," pom.xml && \
-    mvn package -DskipTests && \
+    mvn package -DskipTests -Duser.home=/tmp && \
     python -c 'import zipfile,sys; zipfile.ZipFile(sys.argv[1],"a").write(sys.argv[2],sys.argv[3])' ${JENKINS_WARDIR}/jenkins.war ${JENKINS_WARDIR}/mesos-plugin-mesos-${MESOS_JENKINS_VERSION}/target/mesos.hpi WEB-INF/plugins/mesos.hpi && \
-    rm -fr ${JENKINS_HOME}/.m2 ${JENKINS_WARDIR}/mesos-plugin-mesos-${MESOS_JENKINS_VERSION} ${JENKINS_WARDIR}/mesos-${MESOS_JENKINS_VERSION}.tar.gz
+    rm -fr ${JENKINS_WARDIR}/mesos-plugin-mesos-${MESOS_JENKINS_VERSION} ${JENKINS_WARDIR}/mesos-${MESOS_JENKINS_VERSION}.tar.gz /tmp/.m2/repository
 
 USER root
 ADD entrypoint.sh /
